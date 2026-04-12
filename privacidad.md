@@ -9,12 +9,6 @@ En cumplimiento del Reglamento (UE) 2016/679 del Parlamento Europeo y del Consej
 Personales y garantía de los derechos digitales (LOPDGDD), se informa de la
 presente Política de Privacidad.
 
-## Responsable del tratamiento
-
-- **Nombre o razón social:** [NOMBRE COMPLETO O RAZÓN SOCIAL]
-- **NIF / CIF:** [NIF O CIF]
-- **Correo electrónico:** [EMAIL DE CONTACTO]
-
 ## Datos que se recogen y finalidad del tratamiento
 
 Este sitio web no dispone de formularios de registro ni sistemas de creación de
