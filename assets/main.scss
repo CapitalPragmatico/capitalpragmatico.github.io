@@ -403,30 +403,6 @@ h6 { font-size: 0.875rem; font-weight: 600; color: var(--text-muted); }
     }
   }
 
-    tbody {
-      tr {
-        border-bottom: 1px solid var(--border-subtle);
-        transition: background-color var(--duration) var(--ease-out);
-
-        &:last-child { border-bottom: none; }
-
-        &:hover { background-color: var(--surface-2); }
-      }
-
-      td {
-        padding: 0.875em 1em;
-        color: var(--text-secondary);
-        vertical-align: middle;
-      }
-
-      // Primera columna con énfasis — nombre del producto
-      td:first-child {
-        font-weight: 600;
-        color: var(--text-primary);
-      }
-    }
-  }
-
   // Imágenes responsivas y redondeadas
   img {
     max-width: 100%;
@@ -440,8 +416,6 @@ h6 { font-size: 0.875rem; font-weight: 600; color: var(--text-muted); }
 
   // ============================================================
   // COMPONENTE ESTRELLA: CTA de Afiliado Automático
-  // Cualquier enlace solitario en un párrafo → botón premium
-  // No requiere clases especiales. El Markdown genera esto solo.
   // ============================================================
 
   p > a:only-child {
