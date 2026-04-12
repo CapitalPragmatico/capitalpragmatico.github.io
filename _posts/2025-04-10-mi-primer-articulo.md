@@ -20,7 +20,7 @@ Si tu negocio depende de secuencias complejas, etiquetas de comportamiento y emb
 
 [Accede a los 14 días de prueba de ActiveCampaign para tu empresa](https://www.activecampaign.com/es)
 
-## Veredicto Pragmático
+## Veredicto
 
 No existe la herramienta perfecta, solo la que mejor se adapta a la estructura de costes de tu modelo de negocio. Antes de realizar una migración masiva de tus contactos, aplica esta lógica de **decisión matemática**:
 
