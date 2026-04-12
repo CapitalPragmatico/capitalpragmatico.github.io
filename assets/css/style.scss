@@ -87,3 +87,39 @@ a:hover {
   color: #FFFFFF;
   text-decoration: none;
 }
+/* 6. Modo Oscuro Automático (Detecta la preferencia del sistema operativo) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #0F172A; /* Azul noche profundo */
+    color: #CBD5E1; /* Texto gris claro, no blanco puro */
+  }
+  .site-header {
+    background-color: #1E293B;
+    border-bottom: 1px solid #334155;
+  }
+  .site-title, h1, h2, h3, h4 {
+    color: #F8FAFC;
+  }
+  .post, .page {
+    background: #1E293B;
+    border: 1px solid #334155;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  }
+  /* Ajuste de enlaces en modo oscuro */
+  a {
+    color: #38BDF8; /* Azul claro brillante para destacar */
+  }
+  .post-link {
+    color: #F8FAFC;
+  }
+  /* El botón de afiliado en modo oscuro */
+  .post-content p > a:only-child {
+    background-color: #38BDF8;
+    color: #0F172A;
+    box-shadow: 0 4px 6px rgba(56, 189, 248, 0.2);
+  }
+  .post-content p > a:only-child:hover {
+    background-color: #7DD3FC;
+    color: #0F172A;
+  }
+}
