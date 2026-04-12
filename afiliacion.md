@@ -50,4 +50,4 @@ de las siguientes plataformas, entre otras:
 Para cualquier consulta relacionada con las relaciones comerciales de
 afiliación de este sitio, puede dirigirse a [EMAIL DE CONTACTO].
 
-*Última actualización: [FECHA DE ÚLTIMA REVISIÓN]*
+
