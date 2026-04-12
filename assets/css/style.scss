@@ -1,0 +1,89 @@
+---
+---
+@import "minima";
+
+/* 1. Tipografía Corporativa y Fondo General */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #F4F5F7; /* Gris corporativo muy claro */
+  color: #2C3E50; /* Texto gris oscuro, no negro puro para no cansar la vista */
+  line-height: 1.7;
+}
+
+/* 2. Cabecera limpia y minimalista */
+.site-header {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #EAEAEA;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.site-title {
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -0.5px;
+}
+
+/* 3. El Artículo (Efecto Tarjeta Premium) */
+.page-content {
+  padding: 40px 0;
+}
+.wrapper {
+  max-width: 750px; /* Ancho optimizado para lectura B2B */
+}
+.post, .page {
+  background: #FFFFFF;
+  padding: 45px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  border: 1px solid #F0F0F0;
+}
+
+/* 4. Títulos con jerarquía clara */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  color: #0F172A;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  letter-spacing: -0.5px;
+}
+.post-title {
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+/* 5. Magia CSS: Botones de Afiliado Automáticos */
+/* Los enlaces normales dentro del texto serán azules y limpios */
+a {
+  color: #2563EB;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Si pones un enlace solo en una línea, se convierte en un botón High-Ticket */
+.post-content p > a:only-child {
+  display: block;
+  background-color: #0F172A; /* Azul Noche Premium */
+  color: #FFFFFF;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.2);
+  margin: 30px auto;
+  max-width: 80%;
+  transition: all 0.2s ease;
+}
+.post-content p > a:only-child:hover {
+  background-color: #1E293B;
+  box-shadow: 0 8px 15px rgba(15, 23, 42, 0.3);
+  transform: translateY(-2px);
+  color: #FFFFFF;
+  text-decoration: none;
+}
