@@ -1,0 +1,10 @@
+title: "Software Pragmático"
+description: "Análisis directos y comparativas de software B2B y herramientas de productividad para optimizar tu negocio."
+theme: minima
+lang: es
+
+minima:
+  skin: classic
+
+author:
+  name: "Capital Pragmático"
