@@ -45,4 +45,4 @@ de cada artículo son editorialmente independientes de las relaciones
 comerciales de afiliación.
 
 Para más información sobre este modelo, consulta nuestra
-[Declaración de afiliación](/afiliacion/).
+[Declaración de afiliación](/afiliacion/)
