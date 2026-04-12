@@ -2,124 +2,646 @@
 ---
 @import "minima";
 
-/* 1. Tipografía Corporativa y Fondo General */
+// ============================================================
+// CAPITAL PRAGMÁTICO — Sistema de Diseño B2B SaaS
+// Versión 2.0 | Arquitectura: tokens → base → componentes
+// ============================================================
+
+
+// ============================================================
+// 1. TOKENS DE DISEÑO — Light Mode (fuente de verdad)
+// ============================================================
+
+:root {
+  // Paleta de superficies (fondo a primer plano)
+  --surface-0:   #F0F2F5;   // página: gris frío muy suave, reduce fatiga
+  --surface-1:   #FFFFFF;   // tarjetas y cabecera
+  --surface-2:   #F7F8FA;   // hover de filas, fondos secundarios
+  --surface-3:   #ECEEF2;   // bordes de separación
+
+  // Texto (escala de contraste certificada WCAG AA)
+  --text-primary:   #0D1117;   // títulos — negro grafito, no puro
+  --text-secondary: #3D4451;   // cuerpo de texto
+  --text-muted:     #6B7280;   // metadatos, fechas, subtítulos
+  --text-on-accent: #FFFFFF;   // texto sobre botón de acento
+
+  // Acento primario de conversión
+  // Azul índigo — confianza institucional B2B + alta tasa de clic documentada
+  --accent:         #4F6EF7;   // estado por defecto
+  --accent-hover:   #3A56E4;   // hover: satura un paso, no cambia hue
+  --accent-muted:   #EEF1FE;   // fondos suaves, badges
+  --accent-glow:    rgba(79, 110, 247, 0.18);  // sombra del botón CTA
+
+  // Bordes y divisores
+  --border-subtle:  rgba(0, 0, 0, 0.06);
+  --border-medium:  rgba(0, 0, 0, 0.10);
+
+  // Elevación — sombras multinivel (capas física + ambiente)
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm:  0 2px 6px rgba(0,0,0,0.06),  0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg:  0 8px 30px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-cta: 0 4px 14px var(--accent-glow), 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-cta-hover: 0 8px 24px var(--accent-glow), 0 2px 6px rgba(0,0,0,0.10);
+
+  // Geometría y movimiento
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  20px;
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);   // spring suave para hover
+  --ease-in:    cubic-bezier(0.4, 0, 1, 1);
+  --duration:   220ms;
+}
+
+
+// ============================================================
+// 2. TOKENS DE DISEÑO — Dark Mode
+// Regla: no invertir, recalcular. Nunca #000 ni #FFF puros.
+// ============================================================
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-0:   #0D1117;   // fondo general — GitHub dark, probado en prod
+    --surface-1:   #161B22;   // tarjetas elevadas
+    --surface-2:   #1C2129;   // hover, superficies internas
+    --surface-3:   #30363D;   // bordes visibles
+
+    --text-primary:   #E6EDF3;   // titulares — blanco frío, no puro
+    --text-secondary: #B0BAC7;   // cuerpo — suficiente contraste, sin deslumbrar
+    --text-muted:     #6E7681;
+    --text-on-accent: #FFFFFF;
+
+    // Acento recalibrado: en dark mode los azules puros deslumbran.
+    // Bajamos luminosidad y saturación para que sea cómodo pero clique.
+    --accent:         #6B8AFB;
+    --accent-hover:   #8AA3FC;
+    --accent-muted:   rgba(107, 138, 251, 0.12);
+    --accent-glow:    rgba(107, 138, 251, 0.22);
+
+    --border-subtle:  rgba(255, 255, 255, 0.05);
+    --border-medium:  rgba(255, 255, 255, 0.09);
+
+    // Sombras en dark: menos opacidad, más difusas. No se ven sobre fondo oscuro.
+    --shadow-xs:  0 1px 2px rgba(0,0,0,0.25);
+    --shadow-sm:  0 2px 6px rgba(0,0,0,0.30), 0 1px 2px rgba(0,0,0,0.20);
+    --shadow-md:  0 4px 16px rgba(0,0,0,0.40), 0 2px 4px rgba(0,0,0,0.20);
+    --shadow-lg:  0 8px 30px rgba(0,0,0,0.50), 0 2px 8px rgba(0,0,0,0.25);
+    --shadow-cta: 0 4px 14px var(--accent-glow);
+    --shadow-cta-hover: 0 8px 24px var(--accent-glow);
+  }
+}
+
+
+// ============================================================
+// 3. TIPOGRAFÍA FLUIDA
+// Escala modular 1.25 (Major Third) con clamp() nativo CSS.
+// Funciona sin media queries: escala continua entre móvil y desktop.
+// ============================================================
+
+// Stack: Inter vía system-ui → fallback robusto sin cargar fuentes externas
+$font-sans: "Inter", "Söhne", system-ui, -apple-system, BlinkMacSystemFont,
+            "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code",
+            ui-monospace, "SFMono-Regular", Consolas, monospace;
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #F4F5F7; /* Gris corporativo muy claro */
-  color: #2C3E50; /* Texto gris oscuro, no negro puro para no cansar la vista */
-  line-height: 1.7;
+  font-family: $font-sans;
+  font-size: clamp(15px, 1.5vw, 17px);   // fluido 15px móvil → 17px desktop
+  line-height: 1.75;
+  color: var(--text-secondary);
+  background-color: var(--surface-0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
-/* 2. Cabecera limpia y minimalista */
+// Jerarquía de encabezados — pensada para lectura en diagonal corporativa
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-sans;
+  color: var(--text-primary);
+  line-height: 1.25;
+  letter-spacing: -0.025em;    // tracking negativo: más premium, más digital
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+}
+
+h1 { font-size: clamp(1.75rem, 4vw, 2.5rem);  letter-spacing: -0.04em; }
+h2 { font-size: clamp(1.35rem, 3vw, 1.85rem); letter-spacing: -0.03em; }
+h3 { font-size: clamp(1.15rem, 2.5vw, 1.4rem); }
+h4 { font-size: 1.1rem; font-weight: 600; }
+h5 { font-size: 0.95rem; font-weight: 600; text-transform: uppercase;
+     letter-spacing: 0.06em; color: var(--text-muted); }
+h6 { font-size: 0.875rem; font-weight: 600; color: var(--text-muted); }
+
+
+// ============================================================
+// 4. CABECERA — Superficie fija con blur glassmorphism ligero
+// ============================================================
+
 .site-header {
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #EAEAEA;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color var(--duration) var(--ease-out),
+              box-shadow var(--duration) var(--ease-out);
+
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba(22, 27, 34, 0.88);
+    border-bottom-color: var(--border-medium);
+  }
 }
+
 .site-title {
+  font-size: 1.1rem;
   font-weight: 700;
-  color: #0F172A;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.03em;
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+
+  &:hover {
+    color: var(--accent) !important;
+    text-decoration: none !important;
+  }
 }
 
-/* 3. El Artículo (Efecto Tarjeta Premium) */
+.site-nav {
+  .page-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--duration) var(--ease-out);
+
+    &:hover {
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+  }
+}
+
+
+// ============================================================
+// 5. LAYOUT Y WRAPPER
+// ============================================================
+
 .page-content {
-  padding: 40px 0;
+  padding: clamp(32px, 5vw, 64px) 0;
+  min-height: 70vh;
 }
+
 .wrapper {
-  max-width: 750px; /* Ancho optimizado para lectura B2B */
+  max-width: 780px;
+  padding: 0 clamp(16px, 4vw, 32px);
+  margin: 0 auto;
 }
+
+
+// ============================================================
+// 6. TARJETA DE ARTÍCULO — Superficie elevada premium
+// ============================================================
+
 .post, .page {
-  background: #FFFFFF;
-  padding: 45px;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-  border: 1px solid #F0F0F0;
+  background: var(--surface-1);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-md);
+  padding: clamp(28px, 5vw, 56px);
+  transition: box-shadow var(--duration) var(--ease-out);
 }
 
-/* 4. Títulos con jerarquía clara */
-h1, h2, h3, h4 {
-  font-weight: 700;
-  color: #0F172A;
-  margin-top: 1.8em;
-  margin-bottom: 0.8em;
-  letter-spacing: -0.5px;
+
+// ============================================================
+// 7. CABECERA DEL POST
+// ============================================================
+
+.post-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border-subtle);
 }
+
 .post-title {
-  font-size: 2.4rem;
-  line-height: 1.2;
+  font-size: clamp(1.75rem, 5vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
   margin-top: 0;
-  margin-bottom: 15px;
+  margin-bottom: 0.75rem;
 }
 
-/* 5. Magia CSS: Botones de Afiliado Automáticos */
-/* Los enlaces normales dentro del texto serán azules y limpios */
-a {
-  color: #2563EB;
+.post-meta {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+
+// ============================================================
+// 8. CONTENIDO DEL POST — Tipografía editorial de lectura
+// ============================================================
+
+.post-content {
+
+  p {
+    margin-bottom: 1.4em;
+    color: var(--text-secondary);
+  }
+
+  // H2: separador de sección con acento izquierdo visual
+  h2 {
+    margin-top: 2.5em;
+    padding-top: 2em;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+
+    &:first-child { border-top: none; padding-top: 0; }
+  }
+
+  // H3: anclaje visual sin borde, solo color
+  h3 {
+    color: var(--text-primary);
+    margin-top: 2em;
+  }
+
+  // Separador horizontal estilizado
+  hr {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 2.5em 0;
+  }
+
+  // Listas limpias con marcadores personalizados
+  ul, ol {
+    padding-left: 1.5em;
+    margin-bottom: 1.4em;
+
+    li {
+      margin-bottom: 0.4em;
+      color: var(--text-secondary);
+    }
+  }
+
+  ul > li::marker {
+    color: var(--accent);
+  }
+
+  // Blockquote — para destacar conceptos clave
+  blockquote {
+    margin: 2em 0;
+    padding: 1.25em 1.5em;
+    background: var(--accent-muted);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    color: var(--text-secondary);
+    font-size: 1.05em;
+    line-height: 1.7;
+
+    p { margin-bottom: 0; color: var(--text-secondary); }
+  }
+
+  // Código inline
+  code {
+    font-family: $font-mono;
+    font-size: 0.825em;
+    background: var(--surface-2);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-sm);
+    padding: 0.15em 0.45em;
+    color: var(--text-primary);
+  }
+
+  // Bloques de código
+  pre {
+    background: var(--surface-1);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    padding: 1.25em 1.5em;
+    overflow-x: auto;
+    box-shadow: var(--shadow-xs);
+    margin: 1.75em 0;
+
+    code {
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.875em;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background: #0D1117;
+    }
+  }
+
+  // Tablas comparativas — componente clave para conversión B2B
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    font-size: 0.9em;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-subtle);
+
+    thead {
+      background: var(--surface-2);
+
+      th {
+        padding: 0.875em 1em;
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.8em;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-muted);
+        border-bottom: 1px solid var(--border-medium);
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid var(--border-subtle);
+        transition: background-color var(--duration) var(--ease-out);
+
+        &:last-child { border-bottom: none; }
+
+        &:hover { background-color: var(--surface-2); }
+      }
+
+      td {
+        padding: 0.875em 1em;
+        color: var(--text-secondary);
+        vertical-align: middle;
+      }
+
+      // Primera columna con énfasis — nombre del producto
+      td:first-child {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+    }
+  }
+
+  // Imágenes responsivas y redondeadas
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
+    display: block;
+    margin: 1.75em auto;
+  }
+
+  // ============================================================
+  // COMPONENTE ESTRELLA: CTA de Afiliado Automático
+  // Cualquier enlace solitario en un párrafo → botón premium
+  // No requiere clases especiales. El Markdown genera esto solo.
+  // ============================================================
+
+  p > a:only-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--text-on-accent) !important;
+    text-decoration: none !important;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    padding: 15px 28px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-cta);
+    margin: 2em auto;
+    max-width: 480px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    // Transición spring con cubic-bezier personalizado
+    transition:
+      background-color var(--duration) var(--ease-out),
+      box-shadow var(--duration) var(--ease-out),
+      transform var(--duration) var(--ease-out);
+
+    // Capa de brillo en hover (pseudo-elemento overlay)
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.10) 0%,
+        rgba(255,255,255,0.00) 60%
+      );
+      opacity: 0;
+      transition: opacity var(--duration) var(--ease-out);
+    }
+
+    // Flecha animada (→) como señal de acción
+    &::after {
+      content: "→";
+      display: inline-block;
+      font-size: 1.1em;
+      line-height: 1;
+      transition: transform var(--duration) var(--ease-out);
+      margin-left: 2px;
+    }
+
+    &:hover {
+      background: var(--accent-hover);
+      box-shadow: var(--shadow-cta-hover);
+      transform: translateY(-2px);
+      text-decoration: none !important;
+
+      &::before { opacity: 1; }
+      &::after { transform: translateX(4px); }
+    }
+
+    &:active {
+      transform: translateY(0px);
+      box-shadow: var(--shadow-cta);
+      transition-duration: 80ms;
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      background: var(--accent);
+      color: var(--text-on-accent) !important;
+      box-shadow: var(--shadow-cta);
+
+      &:hover {
+        background: var(--accent-hover);
+      }
+    }
+  }
+}
+
+
+// ============================================================
+// 9. ENLACES INLINE — comportamiento limpio dentro del cuerpo
+// ============================================================
+
+.post-content a:not(:only-child),
+.post-content li a {
+  color: var(--accent);
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.2s ease;
-}
-a:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid transparent;
+  transition:
+    color var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out);
+
+  &:hover {
+    color: var(--accent-hover);
+    border-bottom-color: var(--accent-hover);
+    text-decoration: none;
+  }
 }
 
-/* Si pones un enlace solo en una línea, se convierte en un botón High-Ticket */
-.post-content p > a:only-child {
+
+// ============================================================
+// 10. LISTA DE POSTS EN PORTADA
+// ============================================================
+
+.home {
+  .post-list-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;  // separación mínima, el border hace el trabajo
+
+    > li {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      box-shadow: var(--shadow-xs);
+      transition:
+        box-shadow var(--duration) var(--ease-out),
+        transform var(--duration) var(--ease-out),
+        border-color var(--duration) var(--ease-out);
+      margin-bottom: 12px;
+
+      &:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
+        border-color: var(--border-medium);
+      }
+    }
+  }
+}
+
+.post-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
   display: block;
-  background-color: #0F172A; /* Azul Noche Premium */
-  color: #FFFFFF;
-  padding: 16px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.2);
-  margin: 30px auto;
-  max-width: 80%;
-  transition: all 0.2s ease;
+  margin-bottom: 0.3rem;
 }
-.post-content p > a:only-child:hover {
-  background-color: #1E293B;
-  box-shadow: 0 8px 15px rgba(15, 23, 42, 0.3);
-  transform: translateY(-2px);
-  color: #FFFFFF;
-  text-decoration: none;
+
+.post-link {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
+  text-decoration: none !important;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  display: block;
+
+  &:hover {
+    color: var(--accent) !important;
+    text-decoration: none !important;
+  }
 }
-/* 6. Modo Oscuro Automático (Detecta la preferencia del sistema operativo) */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #0F172A; /* Azul noche profundo */
-    color: #CBD5E1; /* Texto gris claro, no blanco puro */
+
+.post-excerpt {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+
+
+// ============================================================
+// 11. PIE DE PÁGINA
+// ============================================================
+
+.site-footer {
+  background: var(--surface-1);
+  border-top: 1px solid var(--border-subtle);
+  padding: 2rem 0;
+  margin-top: 4rem;
+
+  .footer-col-wrapper {
+    font-size: 0.825rem;
+    color: var(--text-muted);
   }
-  .site-header {
-    background-color: #1E293B;
-    border-bottom: 1px solid #334155;
-  }
-  .site-title, h1, h2, h3, h4 {
-    color: #F8FAFC;
-  }
-  .post, .page {
-    background: #1E293B;
-    border: 1px solid #334155;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-  }
-  /* Ajuste de enlaces en modo oscuro */
+
   a {
-    color: #38BDF8; /* Azul claro brillante para destacar */
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--duration) var(--ease-out);
+
+    &:hover { color: var(--accent); }
   }
-  .post-link {
-    color: #F8FAFC;
+}
+
+
+// ============================================================
+// 12. UTILIDADES RESPONSIVAS
+// ============================================================
+
+@media (max-width: 640px) {
+  .post, .page {
+    border-radius: var(--radius-lg);
+    padding: 24px 20px;
   }
-  /* El botón de afiliado en modo oscuro */
+
   .post-content p > a:only-child {
-    background-color: #38BDF8;
-    color: #0F172A;
-    box-shadow: 0 4px 6px rgba(56, 189, 248, 0.2);
+    max-width: 100%;
+    font-size: 0.95rem;
+    padding: 14px 20px;
   }
-  .post-content p > a:only-child:hover {
-    background-color: #7DD3FC;
-    color: #0F172A;
+
+  table {
+    font-size: 0.8em;
+
+    thead th,
+    tbody td {
+      padding: 0.6em 0.75em;
+    }
+  }
+}
+
+// Respeta la preferencia de movimiento reducido del sistema
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }
