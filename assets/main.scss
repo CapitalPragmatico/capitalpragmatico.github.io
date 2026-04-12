@@ -363,8 +363,45 @@ h6 { font-size: 0.875rem; font-weight: 600; color: var(--text-muted); }
         letter-spacing: 0.06em;
         color: var(--text-muted);
         border-bottom: 1px solid var(--border-medium);
+        background: var(--surface-2);
       }
     }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid var(--border-subtle);
+        transition: background-color var(--duration) var(--ease-out);
+
+        // Neutraliza el zebra-striping nativo de Minima en claro y oscuro
+        &,
+        &:nth-child(even),
+        &:nth-child(odd) {
+          background-color: var(--surface-1);
+        }
+
+        &:last-child { border-bottom: none; }
+
+        &:hover,
+        &:nth-child(even):hover,
+        &:nth-child(odd):hover {
+          background-color: var(--surface-2);
+        }
+      }
+
+      td {
+        padding: 0.875em 1em;
+        color: var(--text-secondary);
+        vertical-align: middle;
+        // Anula cualquier color inline que inyecte Minima
+        background-color: inherit;
+      }
+
+      td:first-child {
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+    }
+  }
 
     tbody {
       tr {
