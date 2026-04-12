@@ -45,9 +45,5 @@ de las siguientes plataformas, entre otras:
 - [Impact.com](https://impact.com)
 - Programas de afiliación directos gestionados por los propios fabricantes
 
-## Contacto
-
-Para cualquier consulta relacionada con las relaciones comerciales de
-afiliación de este sitio, puede dirigirse a [EMAIL DE CONTACTO].
 
 
