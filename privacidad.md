@@ -77,4 +77,3 @@ El usuario puede configurar su navegador para rechazar o eliminar cookies
 en cualquier momento. La desactivación de cookies técnicas puede afectar
 al funcionamiento del Sitio.
 
-*Última actualización: [FECHA DE ÚLTIMA REVISIÓN]*
