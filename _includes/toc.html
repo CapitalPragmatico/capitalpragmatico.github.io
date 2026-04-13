@@ -3,12 +3,15 @@
 {% for block in headers %}
   {% assign level = block | slice: 0, 1 %}
   {% if level == '2' or level == '3' %}
-    {% assign text_start = block | split: '>' | shift | join: '>' %}
-    {% assign text = text_start | split: '</h' | first | strip_html %}
     
-    {% assign id = text | downcase | replace: 'á','a' | replace: 'é','e' | replace: 'í','i' | replace: 'ó','o' | replace: 'ú','u' | replace: 'ñ','n' %}
-    {% assign id = id | remove: ',' | remove: ':' | remove: ';' | remove: '(' | remove: ')' | remove: '?' | remove: '¿' | remove: '!' | remove: '¡' %}
-    {% assign id = id | replace: '   ', ' ' | replace: '  ', ' ' | strip | replace: ' ', '-' %}
+    {% comment %} Extrae el ID exacto generado nativamente por Jekyll {% endcomment %}
+    {% assign id = block | split: 'id="' | last | split: '"' | first %}
+    
+    {% comment %} Extrae el texto limpio para mostrar en la lista {% endcomment %}
+    {% assign parts = block | split: '>' %}
+    {% assign header_tag = parts[0] | append: '>' %}
+    {% assign raw_text = block | remove_first: header_tag %}
+    {% assign text = raw_text | split: '</h' | first | strip_html | strip %}
     
     {% capture toc_item %}<li class="toc-item toc-h{{ level }}"><a href="#{{ id }}">{{ text }}</a></li>{% endcapture %}
     {% assign toc_items = toc_items | append: toc_item %}
