@@ -17,9 +17,8 @@ cuentas de usuario. Los únicos datos que pueden tratarse son los siguientes:
 - **Datos de navegación técnica:** dirección IP, tipo de navegador, sistema
   operativo y páginas visitadas, generados automáticamente por el servidor
   y utilizados exclusivamente para fines estadísticos y de seguridad.
-- **Datos aportados voluntariamente por el usuario** a través del formulario
-  de contacto, si existiera: nombre y dirección de correo electrónico,
-  utilizados exclusivamente para responder a la consulta planteada.
+- **Datos aportados voluntariamente por el usuario** a través del correo
+  electrónico, utilizados exclusivamente para responder a la consulta planteada.
 
 La base jurídica del tratamiento es el interés legítimo del Titular para el
 mantenimiento y seguridad del Sitio, y el consentimiento del interesado para
@@ -27,8 +26,8 @@ el tratamiento de datos aportados voluntariamente.
 
 ## Conservación de los datos
 
-Los datos de navegación técnica se conservan durante un máximo de [PERÍODO,
-ej. 12 meses]. Los datos aportados voluntariamente se conservan durante el
+Los datos de navegación técnica se conservan durante un máximo de 12 meses. 
+Los datos aportados voluntariamente se conservan durante el
 tiempo necesario para atender la solicitud y, en su caso, durante los plazos
 legalmente establecidos.
 
@@ -44,7 +43,7 @@ garantías exigidas por el RGPD.
 
 El interesado puede ejercer en cualquier momento los siguientes derechos
 ante el Responsable del tratamiento, mediante solicitud dirigida a
-[EMAIL DE CONTACTO]:
+softwarepragmatico@proton.me:
 
 - **Acceso:** obtener confirmación sobre si se tratan datos de carácter personal.
 - **Rectificación:** solicitar la corrección de datos inexactos.
@@ -58,22 +57,17 @@ Agencia Española de Protección de Datos (AEPD) en [www.aepd.es](https://www.ae
 
 ## Política de cookies
 
-Este sitio web puede utilizar cookies técnicas propias, necesarias para el
+Este sitio web utiliza únicamente cookies técnicas propias, necesarias para el
 correcto funcionamiento de la navegación, que no requieren consentimiento
-previo del usuario según la normativa vigente.
-
-En caso de utilizarse cookies analíticas o de terceros, se informará al
-usuario mediante el correspondiente aviso de cookies y se solicitará su
-consentimiento explícito antes de su activación.
+previo del usuario según la normativa europea vigente (RGPD). No utilizamos 
+cookies publicitarias ni de seguimiento de terceros.
 
 **Cookies actualmente activas en este sitio:**
 
 | Tipo | Proveedor | Finalidad | Duración |
 |---|---|---|---|
-| Técnica | Propio | Funcionamiento del sitio | Sesión |
-| [Analítica] | [Google / otro] | [Estadísticas de uso] | [Período] |
+| Técnica | Propio (GitHub Pages) | Funcionamiento y seguridad del servidor | Sesión |
 
 El usuario puede configurar su navegador para rechazar o eliminar cookies
 en cualquier momento. La desactivación de cookies técnicas puede afectar
-al funcionamiento del Sitio.
-
+al funcionamiento de ciertas áreas del Sitio.
