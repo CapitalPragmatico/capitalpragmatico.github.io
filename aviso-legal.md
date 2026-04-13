@@ -10,9 +10,9 @@ datos identificativos del titular de este sitio web.
 
 ## Objeto y ámbito de aplicación
 
-El presente Aviso Legal regula el acceso y uso del sitio web [URL DEL SITIO]
-(en adelante, "el Sitio"), del que es titular la persona identificada en el
-apartado anterior (en adelante, "el Titular").
+El presente Aviso Legal regula el acceso y uso del sitio web https://capitalpragmatico.github.io/
+(en adelante, "el Sitio"), del que es titular el equipo de Software Pragmático 
+(en adelante, "el Titular").
 
 El acceso al Sitio implica la aceptación plena y sin reservas de las
 condiciones establecidas en este Aviso Legal. El Titular se reserva el
@@ -46,5 +46,4 @@ privacidad o prácticas de dichos sitios.
 Las presentes condiciones se rigen por la legislación española vigente.
 Para la resolución de cualquier controversia derivada del acceso o uso
 del Sitio, las partes se someten a los juzgados y tribunales de
-[CIUDAD DE JURISDICCIÓN], con renuncia expresa a cualquier otro fuero.
-
+Madrid, España, con renuncia expresa a cualquier otro fuero.
