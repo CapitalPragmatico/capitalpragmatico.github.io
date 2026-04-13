@@ -12,6 +12,6 @@ google_site_verification: "F-cRYR5i7nHa7iTY5oeEbvIfGdfqXPUUUomnyyTmlL0"
 plugins:
   - jekyll-sitemap
 
-  author:        "Equipo Editorial"
+author:        "Equipo Editorial"
 author_role:   "Analistas de Software B2B"
 author_bio:    "Evaluamos herramientas empresariales bajo criterios de ROI, viabilidad técnica y coste total de propiedad. Sin afiliaciones editoriales con los fabricantes analizados."
