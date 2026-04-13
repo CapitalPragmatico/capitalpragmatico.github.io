@@ -11,6 +11,14 @@ google_site_verification: "F-cRYR5i7nHa7iTY5oeEbvIfGdfqXPUUUomnyyTmlL0"
 
 plugins:
   - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Datos para el plugin SEO
+logo: "/assets/images/logo.png" # Aunque no exista aún, lo dejamos preparado
+social:
+  name: "Software Pragmático"
+  links:
+    - https://www.linkedin.com/company/software-pragmatico
 
 author:        "Equipo Editorial"
 author_role:   "Analistas de Software B2B"
