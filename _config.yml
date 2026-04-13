@@ -8,3 +8,6 @@ minima:
 
 author: "Capital Pragmático"
 google_site_verification: "F-cRYR5i7nHa7iTY5oeEbvIfGdfqXPUUUomnyyTmlL0"
+
+plugins:
+  - jekyll-sitemap
