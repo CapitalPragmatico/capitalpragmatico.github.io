@@ -5,7 +5,11 @@
   {% if level == '2' or level == '3' %}
     {% assign text_start = block | split: '>' | shift | join: '>' %}
     {% assign text = text_start | split: '</h' | first | strip_html %}
-    {% assign id = text | downcase | replace: ' ', '-' | replace: 'á','a' | replace: 'é','e' | replace: 'í','i' | replace: 'ó','o' | replace: 'ú','u' | replace: 'ñ','n' | remove: ',' | remove: ':' | remove: '(' | remove: ')' %}
+    
+    {% assign id = text | downcase | replace: 'á','a' | replace: 'é','e' | replace: 'í','i' | replace: 'ó','o' | replace: 'ú','u' | replace: 'ñ','n' %}
+    {% assign id = id | remove: ',' | remove: ':' | remove: ';' | remove: '(' | remove: ')' | remove: '?' | remove: '¿' | remove: '!' | remove: '¡' %}
+    {% assign id = id | replace: '   ', ' ' | replace: '  ', ' ' | strip | replace: ' ', '-' %}
+    
     {% capture toc_item %}<li class="toc-item toc-h{{ level }}"><a href="#{{ id }}">{{ text }}</a></li>{% endcapture %}
     {% assign toc_items = toc_items | append: toc_item %}
   {% endif %}
