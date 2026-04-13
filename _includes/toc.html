@@ -1,0 +1,21 @@
+{% assign headers = content | split: '<h' %}
+{% assign toc_items = '' %}
+{% for block in headers %}
+  {% assign level = block | slice: 0, 1 %}
+  {% if level == '2' or level == '3' %}
+    {% assign text_start = block | split: '>' | shift | join: '>' %}
+    {% assign text = text_start | split: '</h' | first | strip_html %}
+    {% assign id = text | downcase | replace: ' ', '-' | replace: 'á','a' | replace: 'é','e' | replace: 'í','i' | replace: 'ó','o' | replace: 'ú','u' | replace: 'ñ','n' | remove: ',' | remove: ':' | remove: '(' | remove: ')' %}
+    {% capture toc_item %}<li class="toc-item toc-h{{ level }}"><a href="#{{ id }}">{{ text }}</a></li>{% endcapture %}
+    {% assign toc_items = toc_items | append: toc_item %}
+  {% endif %}
+{% endfor %}
+
+{% if toc_items != '' %}
+<nav class="toc" aria-label="Tabla de contenidos">
+  <p class="toc-title">Contenidos</p>
+  <ul class="toc-list">
+    {{ toc_items }}
+  </ul>
+</nav>
+{% endif %}
