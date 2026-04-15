@@ -13,13 +13,15 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
-# Datos para el plugin SEO
-logo: "/assets/images/logo.png" # Aunque no exista aún, lo dejamos preparado
+# Datos para el plugin SEO e imágenes sociales
+image: "/assets/images/social-cover.png"
+logo: "/assets/images/social-cover.png"
 social:
   name: "Software Pragmático"
   links:
     - https://www.linkedin.com/company/software-pragmatico
 
+# Información del equipo editorial
 author:        "Equipo Editorial"
 author_role:   "Analistas de Software B2B"
 author_bio:    "Evaluamos herramientas empresariales bajo criterios de ROI, viabilidad técnica y coste total de propiedad. Sin afiliaciones editoriales con los fabricantes analizados."
