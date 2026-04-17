@@ -1,1 +1,0 @@
-# capitalpragmatico.github.io
